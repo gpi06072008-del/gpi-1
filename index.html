@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Majhi Love ❤️🎂</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Majhi Love ❤️🎂</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Play Button for Music -->
-  <button id="playMusic">🎵 Play Music</button>
   
+  <!-- Falling Hearts Container -->
+  <div id="hearts-container"></div>
+
   <div class="main-frame">
-    <!-- Left Side: Message -->
+    <!-- Left: Typewriter Message -->
     <div class="left-side">
       <h1 id="typewriter"></h1>
     </div>
 
-    <!-- Right Side: Images -->
+    <!-- Right: Images -->
     <div class="right-side">
       <img src="og/bg1.jpg" alt="bg1">
       <img src="og/bg2.jpg" alt="bg2">
@@ -32,14 +33,15 @@
     </div>
   </div>
 
-  <!-- Audio -->
-  <audio id="bgMusic" loop>
+  <!-- Background Music -->
+  <audio id="bgMusic" autoplay loop>
     <source src="og/song.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
-  <!-- Typewriter Script -->
+  <!-- Scripts -->
   <script>
+    // -------- Typewriter Effect --------
     const message = `Happy Birthday majhi love ❤️🎂
 Aajcha divas khup special aahe, karan ya divshi mazi life madhe ek most precious person aali hoti 💖✨
 Tu ahes mhanun maza world complete vatata 🌍🥰
@@ -64,7 +66,7 @@ Stay happy, stay crazy, ani always mazyasobat raha 😘💕
 Love you more than you know ❤️🔥`;
 
     let i = 0;
-    const speed = 30; // typing speed
+    const speed = 30;
 
     function typeWriter() {
       if(i < message.length){
@@ -77,13 +79,24 @@ Love you more than you know ❤️🔥`;
 
     window.onload = typeWriter;
 
-    // Play music button
-    const music = document.getElementById("bgMusic");
-    const btn = document.getElementById("playMusic");
-    btn.addEventListener("click", () => {
-      music.play();
-      btn.style.display = "none"; // hide button after click
-    });
+    // -------- Falling Hearts Effect --------
+    const heartsContainer = document.getElementById("hearts-container");
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = 3 + Math.random() * 3 + 's';
+      heart.style.fontSize = 10 + Math.random() * 20 + 'px';
+      heart.innerText = '❤️';
+      heartsContainer.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
+
+    setInterval(createHeart, 300); // every 0.3s a new heart
   </script>
 </body>
 </html>
