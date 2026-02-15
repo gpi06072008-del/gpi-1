@@ -1,43 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Majhi Love ❤️🎂</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Majhi Love ❤️🎂</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Background Music -->
-    <audio id="bgMusic" autoplay loop>
-        <source src="og/song.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
-    <div class="main-frame">
-        <!-- Left: Message -->
-        <div class="left-side">
-            <h1 id="typewriter"></h1>
-        </div>
-
-        <!-- Right: Images -->
-        <div class="right-side">
-            <img src="og/bg1.jpg" alt="bg1">
-            <img src="og/bg2.jpg" alt="bg2">
-            <img src="og/bg3.jpg" alt="bg3">
-            <img src="og/bg4.jpg" alt="bg4">
-            <img src="og/bg5.jpg" alt="bg5">
-            <img src="og/bg6.jpg" alt="bg6">
-            <img src="og/bg7.jpg" alt="bg7">
-            <img src="og/bg8.jpg" alt="bg8">
-            <img src="og/bg9.jpg" alt="bg9">
-            <img src="og/bg10.jpg" alt="bg10">
-            <img src="og/bg11.jpg" alt="bg11">
-        </div>
+  <!-- Play Button for Music -->
+  <button id="playMusic">🎵 Play Music</button>
+  
+  <div class="main-frame">
+    <!-- Left Side: Message -->
+    <div class="left-side">
+      <h1 id="typewriter"></h1>
     </div>
 
-    <!-- Typewriter Script -->
-    <script>
-        const message = `Happy Birthday majhi love ❤️🎂
+    <!-- Right Side: Images -->
+    <div class="right-side">
+      <img src="og/bg1.jpg" alt="bg1">
+      <img src="og/bg2.jpg" alt="bg2">
+      <img src="og/bg3.jpg" alt="bg3">
+      <img src="og/bg4.jpg" alt="bg4">
+      <img src="og/bg5.jpg" alt="bg5">
+      <img src="og/bg6.jpg" alt="bg6">
+      <img src="og/bg7.jpg" alt="bg7">
+      <img src="og/bg8.jpg" alt="bg8">
+      <img src="og/bg9.jpg" alt="bg9">
+      <img src="og/bg10.jpg" alt="bg10">
+      <img src="og/bg11.jpg" alt="bg11">
+    </div>
+  </div>
+
+  <!-- Audio -->
+  <audio id="bgMusic" loop>
+    <source src="og/song.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Typewriter Script -->
+  <script>
+    const message = `Happy Birthday majhi love ❤️🎂
 Aajcha divas khup special aahe, karan ya divshi mazi life madhe ek most precious person aali hoti 💖✨
 Tu ahes mhanun maza world complete vatata 🌍🥰
 
@@ -60,18 +63,27 @@ Stay happy, stay crazy, ani always mazyasobat raha 😘💕
 
 Love you more than you know ❤️🔥`;
 
-        let i = 0;
-        const speed = 30; // typing speed in ms
+    let i = 0;
+    const speed = 30; // typing speed
 
-        function typeWriter() {
-            if (i < message.length) {
-                document.getElementById("typewriter").innerHTML += message.charAt(i).replace(/\n/g, "<br>");
-                i++;
-                setTimeout(typeWriter, speed);
-            }
-        }
+    function typeWriter() {
+      if(i < message.length){
+        const char = message.charAt(i);
+        document.getElementById("typewriter").innerHTML += (char === "\n" ? "<br>" : char);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    }
 
-        window.onload = typeWriter;
-    </script>
+    window.onload = typeWriter;
+
+    // Play music button
+    const music = document.getElementById("bgMusic");
+    const btn = document.getElementById("playMusic");
+    btn.addEventListener("click", () => {
+      music.play();
+      btn.style.display = "none"; // hide button after click
+    });
+  </script>
 </body>
 </html>
