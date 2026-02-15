@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  
+
   <!-- Falling Hearts Container -->
   <div id="hearts-container"></div>
 
@@ -34,7 +34,7 @@
   </div>
 
   <!-- Background Music -->
-  <audio id="bgMusic" autoplay loop>
+  <audio id="bgMusic" autoplay loop muted>
     <source src="og/song.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
@@ -77,26 +77,43 @@ Love you more than you know ❤️🔥`;
       }
     }
 
-    window.onload = typeWriter;
+    window.onload = () => {
+      typeWriter();
 
-    // -------- Falling Hearts Effect --------
+      // -------- Music autoplay trick for mobile --------
+      const audio = document.getElementById('bgMusic');
+      audio.volume = 0.01;  // start very low
+      audio.play().then(() => {
+        let vol = 0.01;
+        const fade = setInterval(()=>{
+          if(vol < 1){
+            vol += 0.05;
+            audio.volume = vol;
+          } else clearInterval(fade);
+        },100);
+      }).catch(err=>{
+        console.log('Audio autoplay blocked', err);
+      });
+    };
+
+    // -------- Falling Hearts --------
     const heartsContainer = document.getElementById("hearts-container");
 
     function createHeart() {
       const heart = document.createElement('div');
       heart.classList.add('heart');
       heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = 3 + Math.random() * 3 + 's';
-      heart.style.fontSize = 10 + Math.random() * 20 + 'px';
+      heart.style.animationDuration = 3 + Math.random() * 4 + 's';
+      heart.style.fontSize = 12 + Math.random() * 20 + 'px';
       heart.innerText = '❤️';
       heartsContainer.appendChild(heart);
 
       setTimeout(() => {
         heart.remove();
-      }, 6000);
+      }, 7000);
     }
 
-    setInterval(createHeart, 300); // every 0.3s a new heart
+    setInterval(createHeart, 300); // new heart every 0.3s
   </script>
 </body>
 </html>
