@@ -8,35 +8,19 @@
 </head>
 <body>
     <!-- Background Music -->
-    <audio autoplay loop>
+    <audio id="bgMusic" autoplay loop>
         <source src="og/song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
     </audio>
 
-    <div class="container">
-        <!-- Birthday Message -->
-        <div class="message">
-            <h1>Happy Birthday majhi love ❤️🎂</h1>
-            <p>
-                Aajcha divas khup special aahe, karan ya divshi mazi life madhe ek most precious person aali hoti 💖✨<br>
-                Tu ahes mhanun maza world complete vatata 🌍🥰<br><br>
-                Tuzya sobat bolna, hasna, choti choti fights karna 😅💕<br>
-                He sagla mazyasathi khup special aahe.<br>
-                Tu mazi habit zali ahes ani honestly mala hi habit kadhich sodhaychi nahi 😘💞<br><br>
-                Jevha tu mhantes “I’m with you”, tevha mala kahi hi tension vatat nahi 🤞❤️<br>
-                Tu mazi biggest support system ahes 🫶<br><br>
-                Mi promise karto, life madhe kahi hi zala tari<br>
-                Mi nehmi tuzyasobat ubha asnar 💪💖<br>
-                Tuzya swapnanna support karnaar, tuzyasathi clap karnaar ani tuzyasathi fight pan karnaar 😌🔥<br><br>
-                Devane mala tuzyasarkhi wife dili, mi kharach khup lucky aahe 🍀❤️<br>
-                Future madhe pan mala fakt tuzya sobat birthdays celebrate karayche aahet 🎂💍<br><br>
-                Enjoy your day majhi queen 👑✨<br>
-                Stay happy, stay crazy, ani always mazyasobat raha 😘💕<br><br>
-                Love you more than you know ❤️🔥
-            </p>
+    <div class="main-frame">
+        <!-- Left: Message -->
+        <div class="left-side">
+            <h1 id="typewriter"></h1>
         </div>
 
-        <!-- Zig-Zag Images -->
-        <div class="images">
+        <!-- Right: Images -->
+        <div class="right-side">
             <img src="og/bg1.jpg" alt="bg1">
             <img src="og/bg2.jpg" alt="bg2">
             <img src="og/bg3.jpg" alt="bg3">
@@ -50,6 +34,44 @@
             <img src="og/bg11.jpg" alt="bg11">
         </div>
     </div>
+
+    <!-- Typewriter Script -->
+    <script>
+        const message = `Happy Birthday majhi love ❤️🎂
+Aajcha divas khup special aahe, karan ya divshi mazi life madhe ek most precious person aali hoti 💖✨
+Tu ahes mhanun maza world complete vatata 🌍🥰
+
+Tuzya sobat bolna, hasna, choti choti fights karna 😅💕
+He sagla mazyasathi khup special aahe.
+Tu mazi habit zali ahes ani honestly mala hi habit kadhich sodhaychi nahi 😘💞
+
+Jevha tu mhantes “I’m with you”, tevha mala kahi hi tension vatat nahi 🤞❤️
+Tu mazi biggest support system ahes 🫶
+
+Mi promise karto, life madhe kahi hi zala tari
+Mi nehmi tuzyasobat ubha asnar 💪💖
+Tuzya swapnanna support karnaar, tuzyasathi clap karnaar ani tuzyasathi fight pan karnaar 😌🔥
+
+Devane mala tuzyasarkhi wife dili, mi kharach khup lucky aahe 🍀❤️
+Future madhe pan mala fakt tuzya sobat birthdays celebrate karayche aahet 🎂💍
+
+Enjoy your day majhi queen 👑✨
+Stay happy, stay crazy, ani always mazyasobat raha 😘💕
+
+Love you more than you know ❤️🔥`;
+
+        let i = 0;
+        const speed = 30; // typing speed in ms
+
+        function typeWriter() {
+            if (i < message.length) {
+                document.getElementById("typewriter").innerHTML += message.charAt(i).replace(/\n/g, "<br>");
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+
+        window.onload = typeWriter;
+    </script>
 </body>
 </html>
-  
